@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+*.tsbuildinfo
+
+# env — only .env.example is tracked
+.env*
+!.env.example
+
+# vercel
+.vercel/
+
+# testing
+test-results/
+playwright-report/
+.lighthouseci/
+
+# local tooling
+.claude/
+
+# os
+.DS_Store
+Thumbs.db
+.lighthouseci/
