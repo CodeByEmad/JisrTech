@@ -21,7 +21,7 @@ export function ProcessScene({ locale }: { locale: Locale }) {
         {processStages.map((stage, i) => (
           <li key={stage.name.en}>
             <Reveal delay={(i % 2) * 0.08} className="flex items-start gap-5 border-t border-line pt-6">
-              <span className="text-3xl font-extrabold leading-none text-accent/30">
+              <span aria-hidden className="text-3xl font-extrabold leading-none text-accent/30">
                 {orderDigits(i + 1, locale)}
               </span>
               <div>

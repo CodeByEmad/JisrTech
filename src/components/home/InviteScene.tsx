@@ -33,45 +33,47 @@ export function InviteScene({ locale }: { locale: Locale }) {
               {home.cta[locale]}
             </a>
 
-            <dl className="mt-9 space-y-6">
-              <div className="flex items-start gap-4">
+            <ul className="mt-9 space-y-6">
+              <li className="flex items-start gap-4">
                 <span className="flex size-11 shrink-0 items-center justify-center rounded-field border border-line bg-paper-raise text-accent">
                   <WhatsappLogo weight="fill" className="size-5.5" aria-hidden />
                 </span>
-                <div>
-                  <dt className="text-sm font-bold text-ink-soft">
+                <span>
+                  <span className="block text-sm font-bold text-ink-soft">
                     {contactPage.whatsappBlock.label[locale]}
-                  </dt>
-                  <dd dir="ltr" className="mt-0.5 font-extrabold text-ink rtl:text-end">
+                  </span>
+                  <span dir="ltr" className="mt-0.5 block font-extrabold text-ink rtl:text-end">
                     {site.whatsapp.display}
-                  </dd>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
+                  </span>
+                </span>
+              </li>
+              <li className="flex items-start gap-4">
                 <span className="flex size-11 shrink-0 items-center justify-center rounded-field border border-line bg-paper-raise text-accent">
                   <MapPin className="size-5.5" aria-hidden />
                 </span>
-                <div>
-                  <dt className="text-sm font-bold text-ink-soft">
+                <span>
+                  <span className="block text-sm font-bold text-ink-soft">
                     {contactPage.methods.location[locale]}
-                  </dt>
-                  <dd className="mt-0.5 font-extrabold text-ink">{site.location[locale]}</dd>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
+                  </span>
+                  <span className="mt-0.5 block font-extrabold text-ink">
+                    {site.location[locale]}
+                  </span>
+                </span>
+              </li>
+              <li className="flex items-start gap-4">
                 <span className="flex size-11 shrink-0 items-center justify-center rounded-field border border-line bg-paper-raise text-accent">
                   <Translate className="size-5.5" aria-hidden />
                 </span>
-                <div>
-                  <dt className="text-sm font-bold text-ink-soft">
+                <span>
+                  <span className="block text-sm font-bold text-ink-soft">
                     {contactPage.methods.languages[locale]}
-                  </dt>
-                  <dd className="mt-0.5 font-extrabold text-ink">
+                  </span>
+                  <span className="mt-0.5 block font-extrabold text-ink">
                     {contactPage.methods.languagesValue[locale]}
-                  </dd>
-                </div>
-              </div>
-            </dl>
+                  </span>
+                </span>
+              </li>
+            </ul>
           </Reveal>
 
           <Reveal delay={0.12}>

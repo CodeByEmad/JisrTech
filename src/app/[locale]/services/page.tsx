@@ -57,7 +57,7 @@ export default async function ServicesPage({ params }: PageProps) {
                         </span>
                       ) : null;
                     })()}
-                    <span className="text-3xl font-extrabold leading-none text-accent/25">
+                    <span aria-hidden className="text-3xl font-extrabold leading-none text-accent/60">
                       {orderDigits(service.order, locale)}
                     </span>
                   </div>

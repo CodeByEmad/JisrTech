@@ -69,7 +69,7 @@ export default async function StudioPage({ params }: PageProps) {
                   delay={(i % 2) * 0.08}
                   className="flex h-full items-start gap-5 border-t border-line pt-6"
                 >
-                  <span className="text-3xl font-extrabold leading-none text-accent/30">
+                  <span aria-hidden className="text-3xl font-extrabold leading-none text-accent/30">
                     {orderDigits(i + 1, locale)}
                   </span>
                   <div>

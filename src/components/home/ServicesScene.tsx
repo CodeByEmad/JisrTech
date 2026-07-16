@@ -34,7 +34,10 @@ export function ServicesScene({ locale }: { locale: Locale }) {
                 href={`/services#${service.anchor}`}
                 className="group flex h-full flex-col p-7 transition-colors duration-300 hover:bg-accent-tint/40"
               >
-                <span className="text-3xl font-extrabold text-accent/25 transition-colors duration-300 group-hover:text-accent/60">
+                <span
+                  aria-hidden
+                  className="text-3xl font-extrabold text-accent/25 transition-colors duration-300 group-hover:text-accent/60"
+                >
                   {orderDigits(service.order, locale)}
                 </span>
                 <h3 className="mt-4 text-heading font-extrabold text-ink">
