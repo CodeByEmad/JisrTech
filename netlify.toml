@@ -1,0 +1,11 @@
+# Netlify deployment (the runtime detects Next.js automatically).
+# Required environment variables in the Netlify UI:
+#   RESEND_API_KEY        - contact form delivery
+#   NEXT_PUBLIC_SITE_URL  - https://jisrtech.sa once the domain is live
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
