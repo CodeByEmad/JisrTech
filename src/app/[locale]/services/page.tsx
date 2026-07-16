@@ -21,6 +21,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     path: "/services",
     title: servicesPage.meta.title,
     description: servicesPage.meta.description,
+    ogSlug: "services",
   });
 }
 

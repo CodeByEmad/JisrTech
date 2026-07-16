@@ -19,6 +19,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     path: "/contact",
     title: contactPage.meta.title,
     description: contactPage.meta.description,
+    ogSlug: "contact",
   });
 }
 

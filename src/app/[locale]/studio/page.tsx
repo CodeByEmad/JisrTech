@@ -19,6 +19,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     path: "/studio",
     title: studioPage.meta.title,
     description: studioPage.meta.description,
+    ogSlug: "studio",
   });
 }
 
@@ -66,8 +67,10 @@ export default async function StudioPage({ params }: PageProps) {
                 strokeLinecap="round"
               />
             </svg>
-            <span className="absolute bottom-6 text-sm font-bold tracking-[0.18em] text-accent/60">
-              {site.wordmark.latin} — {site.wordmark.arabic}
+            <span className="absolute bottom-6 flex items-center gap-2.5 text-sm font-bold tracking-[0.18em] text-accent/60">
+              {site.wordmark.latin}
+              <span className="h-0.75 w-4 rounded-full bg-accent/40" />
+              {site.wordmark.arabic}
             </span>
           </div>
         </Reveal>
@@ -93,7 +96,7 @@ export default async function StudioPage({ params }: PageProps) {
                   delay={(i % 2) * 0.08}
                   className="flex h-full items-start gap-5 border-t border-line pt-6"
                 >
-                  <span aria-hidden className="text-3xl font-extrabold leading-none text-accent/30">
+                  <span aria-hidden className="text-3xl font-extrabold leading-none text-accent/60">
                     {orderDigits(i + 1, locale)}
                   </span>
                   <div>

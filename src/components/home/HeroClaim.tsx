@@ -19,13 +19,15 @@ export function HeroClaim({
   joinPost: boolean;
 }) {
   const reduce = useReducedMotion();
+  // Opacity stays 1 so the claim paints at first render (it is the LCP
+  // element); only blur and position resolve.
   const part = (i: number) =>
     reduce
       ? {}
       : {
-          initial: { opacity: 0, y: 26, filter: "blur(10px)" },
-          animate: { opacity: 1, y: 0, filter: "blur(0px)" },
-          transition: { duration: 0.9, delay: 0.1 + i * 0.15, ease: [0.16, 1, 0.3, 1] as const },
+          initial: { y: 22, filter: "blur(8px)" },
+          animate: { y: 0, filter: "blur(0px)" },
+          transition: { duration: 0.85, delay: 0.08 + i * 0.14, ease: [0.16, 1, 0.3, 1] as const },
         };
 
   return (

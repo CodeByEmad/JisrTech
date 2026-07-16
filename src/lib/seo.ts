@@ -17,6 +17,8 @@ type BuildMetadataArgs = {
   path: string;
   title: Localized;
   description: Localized;
+  /** Page-specific OG image slug (e.g. "services" -> /og/og-services-ar.png). */
+  ogSlug?: string;
 };
 
 export function buildMetadata({
@@ -24,7 +26,9 @@ export function buildMetadata({
   path,
   title,
   description,
+  ogSlug,
 }: BuildMetadataArgs): Metadata {
+  const ogImage = ogSlug ? `/og/og-${ogSlug}-${locale}.png` : `/og/og-${locale}.png`;
   return {
     title: title[locale],
     description: description[locale],
@@ -45,7 +49,7 @@ export function buildMetadata({
       type: "website",
       images: [
         {
-          url: `/og/og-${locale}.png`,
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: "Jisr Tech, جسر تك",
@@ -56,7 +60,7 @@ export function buildMetadata({
       card: "summary_large_image",
       title: title[locale],
       description: description[locale],
-      images: [`/og/og-${locale}.png`],
+      images: [ogImage],
     },
   };
 }

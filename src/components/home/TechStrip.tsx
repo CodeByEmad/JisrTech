@@ -29,6 +29,8 @@ function TechItems({ hidden = false }: { hidden?: boolean }) {
               <img
                 src={logo}
                 alt=""
+                width={22}
+                height={22}
                 className="h-5.5 w-auto opacity-60 grayscale transition-[opacity,filter] duration-300 hover:opacity-100 hover:grayscale-0"
               />
             )}
