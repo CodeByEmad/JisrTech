@@ -54,6 +54,7 @@ export default async function StudioPage({ params }: PageProps) {
             ghost={site.wordmark.arabic}
             stages={processStages.map((stage) => stage.name[locale])}
             caption={site.wordmark}
+            rtl={locale === "ar"}
           />
         </Reveal>
       </section>
