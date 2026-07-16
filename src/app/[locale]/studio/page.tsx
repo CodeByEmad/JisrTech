@@ -9,6 +9,7 @@ import { orderDigits } from "@/lib/digits";
 import { PageHero } from "@/components/system/PageHero";
 import { Reveal } from "@/components/system/Reveal";
 import { SectionHeader } from "@/components/system/SectionHeader";
+import { StudioPlate } from "@/components/studio/StudioPlate";
 
 type PageProps = { params: Promise<{ locale: Locale }> };
 
@@ -49,30 +50,11 @@ export default async function StudioPage({ params }: PageProps) {
           </div>
         </Reveal>
         <Reveal delay={0.12} className="max-lg:hidden">
-          <div
-            aria-hidden
-            className="relative flex aspect-square items-center justify-center overflow-hidden rounded-card bg-linear-to-br from-accent-tint via-paper-raise to-[#efeaf9]"
-          >
-            <svg viewBox="0 0 512 512" className="w-3/5" fill="none">
-              <path
-                d="M92 322 Q256 178 420 322"
-                stroke="var(--color-accent)"
-                strokeWidth="34"
-                strokeLinecap="round"
-              />
-              <path
-                d="M132 376 H380"
-                stroke="var(--color-accent-bright)"
-                strokeWidth="24"
-                strokeLinecap="round"
-              />
-            </svg>
-            <span className="absolute bottom-6 flex items-center gap-2.5 text-sm font-bold tracking-[0.18em] text-accent/60">
-              {site.wordmark.latin}
-              <span className="h-0.75 w-4 rounded-full bg-accent/40" />
-              {site.wordmark.arabic}
-            </span>
-          </div>
+          <StudioPlate
+            ghost={site.wordmark.arabic}
+            stages={processStages.map((stage) => stage.name[locale])}
+            caption={site.wordmark}
+          />
         </Reveal>
       </section>
 
