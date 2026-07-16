@@ -4,23 +4,25 @@ import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 /**
- * Security headers per docs/prd.md §8.
- * script-src requires 'unsafe-inline' for Next.js static bootstrapping
- * (nonce-based CSP would force dynamic rendering, breaking NFR-P).
+ * Security headers. script-src requires 'unsafe-inline' for Next.js
+ * static bootstrapping (nonce-based CSP would force dynamic rendering).
+ * No third-party hosts: everything the site loads is self-hosted.
  */
 const securityHeaders = [
   {
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com",
+      "script-src 'self' 'unsafe-inline'",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data:",
       "font-src 'self'",
-      "connect-src 'self' https://vitals.vercel-insights.com",
+      "connect-src 'self'",
+      "object-src 'none'",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",
+      "upgrade-insecure-requests",
     ].join("; "),
   },
   {
@@ -28,11 +30,13 @@ const securityHeaders = [
     value: "max-age=63072000; includeSubDomains; preload",
   },
   { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "X-Frame-Options", value: "DENY" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
 ];
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
   images: {
     // AVIF first: the demo screenshots are the heaviest assets we serve.
     formats: ["image/avif", "image/webp"],

@@ -38,6 +38,9 @@
   "overrides": {
     "next-intl": {
       "@swc/helpers": "^0.5.23"
+    },
+    "next": {
+      "postcss": "^8.5.6"
     }
   }
 }
