@@ -52,7 +52,10 @@ export default async function ContactPage({ params }: PageProps) {
                   <WhatsappLogo weight="fill" className="size-5.5" aria-hidden />
                 </span>
                 <div>
-                  <dt className="text-sm font-bold text-ink-soft">{wa.label[locale]}</dt>
+                  {/* Product name, same strings the founder used in the privacy copy. */}
+                  <dt className="text-sm font-bold text-ink-soft">
+                    {locale === "ar" ? "واتساب" : "WhatsApp"}
+                  </dt>
                   <dd dir="ltr" className="mt-0.5 font-extrabold text-ink rtl:text-end">
                     {site.whatsapp.display}
                   </dd>

@@ -2,13 +2,14 @@
 
 import { useState } from "react";
 import { List, X } from "@phosphor-icons/react";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { site } from "@/content/site";
 import type { Locale } from "@/i18n/routing";
 import { LocaleToggle } from "./LocaleToggle";
 
 export function MobileMenu({ locale }: { locale: Locale }) {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <div className="md:hidden">
@@ -25,20 +26,24 @@ export function MobileMenu({ locale }: { locale: Locale }) {
       {open && (
         <nav
           aria-label={site.menu.ariaLabel[locale]}
-          className="fixed inset-x-0 top-[68px] z-50 border-b border-line bg-paper-raise px-6 pb-8 pt-2 shadow-raise"
+          className="fixed inset-x-0 top-17 z-50 border-b border-line bg-paper-raise px-6 pb-8 pt-2 shadow-raise"
         >
           <ul className="divide-y divide-line">
-            {site.nav.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="block py-4 text-lg font-bold text-ink"
-                >
-                  {item.label[locale]}
-                </Link>
-              </li>
-            ))}
+            {site.nav.map((item) => {
+              const active = pathname.startsWith(item.href);
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    aria-current={active ? "page" : undefined}
+                    className={`block py-4 text-lg font-bold ${active ? "text-accent" : "text-ink"}`}
+                  >
+                    {item.label[locale]}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
           <div className="mt-4 flex items-center justify-between gap-4">
             <Link

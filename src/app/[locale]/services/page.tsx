@@ -48,18 +48,20 @@ export default async function ServicesPage({ params }: PageProps) {
             <Reveal>
               <div className="grid gap-x-12 gap-y-6 lg:grid-cols-[1fr_1.7fr]">
                 <div>
-                  {(() => {
-                    const Icon = SERVICE_ICONS[service.anchor];
-                    return Icon ? (
-                      <span className="mb-5 flex size-12 items-center justify-center rounded-field bg-accent-tint text-accent">
-                        <Icon weight="duotone" className="size-6" />
-                      </span>
-                    ) : null;
-                  })()}
-                  <span className="text-sm font-bold text-accent">
-                    {orderDigits(service.order, locale)}
-                  </span>
-                  <h2 className="mt-2 text-title font-extrabold text-ink">
+                  <div className="flex items-center gap-4">
+                    {(() => {
+                      const Icon = SERVICE_ICONS[service.anchor];
+                      return Icon ? (
+                        <span className="flex size-12 shrink-0 items-center justify-center rounded-field bg-accent-tint text-accent">
+                          <Icon weight="duotone" className="size-6" />
+                        </span>
+                      ) : null;
+                    })()}
+                    <span className="text-3xl font-extrabold leading-none text-accent/25">
+                      {orderDigits(service.order, locale)}
+                    </span>
+                  </div>
+                  <h2 className="mt-5 text-title font-extrabold text-ink">
                     {service.name[locale]}
                   </h2>
                 </div>

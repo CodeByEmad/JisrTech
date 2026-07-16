@@ -3,6 +3,8 @@ import { setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { legalPage } from "@/content/pages/legal";
 import { buildMetadata } from "@/lib/seo";
+import { PageHero } from "@/components/system/PageHero";
+import { Reveal } from "@/components/system/Reveal";
 
 type PageProps = { params: Promise<{ locale: Locale }> };
 
@@ -21,21 +23,22 @@ export default async function PrivacyPage({ params }: PageProps) {
   setRequestLocale(locale);
 
   return (
-    <div className="mx-auto max-w-3xl px-5 pb-24 pt-16 sm:px-8 sm:pb-32 sm:pt-24">
-      <h1 className="text-display font-extrabold text-ink">{legalPage.title[locale]}</h1>
-      <p className="mt-4 text-sm font-bold text-ink-soft">{legalPage.updated[locale]}</p>
-      <div className="mt-12 space-y-10">
-        {legalPage.sections.map((section) => (
-          <section key={section.heading.en}>
-            <h2 className="text-heading font-extrabold text-ink">
-              {section.heading[locale]}
-            </h2>
-            <p className="mt-3 max-w-[68ch] leading-relaxed text-ink-soft">
-              {section.body[locale]}
-            </p>
-          </section>
-        ))}
+    <>
+      <PageHero locale={locale} kicker={legalPage.updated} title={legalPage.title} />
+      <div className="mx-auto max-w-6xl px-5 pb-24 pt-4 sm:px-8 sm:pb-28">
+        <Reveal>
+          <div className="max-w-[68ch] space-y-10">
+            {legalPage.sections.map((section) => (
+              <section key={section.heading.en} className="border-t border-line pt-6">
+                <h2 className="text-heading font-extrabold text-ink">
+                  {section.heading[locale]}
+                </h2>
+                <p className="mt-3 leading-relaxed text-ink-soft">{section.body[locale]}</p>
+              </section>
+            ))}
+          </div>
+        </Reveal>
       </div>
-    </div>
+    </>
   );
 }

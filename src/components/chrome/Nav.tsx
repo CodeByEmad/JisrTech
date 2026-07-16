@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { site } from "@/content/site";
 import type { Locale } from "@/i18n/routing";
 import { Wordmark } from "./Wordmark";
@@ -15,6 +15,7 @@ import { MobileMenu } from "./MobileMenu";
  */
 export function Nav({ locale }: { locale: Locale }) {
   const { scrollY } = useScroll();
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   useMotionValueEvent(scrollY, "change", (y) => setScrolled(y > 12));
 
@@ -24,7 +25,7 @@ export function Nav({ locale }: { locale: Locale }) {
         scrolled ? "border-b border-line/80 shadow-raise" : "border-b border-transparent"
       }`}
     >
-      <div className="mx-auto flex h-[68px] max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
+      <div className="mx-auto flex h-17 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
         <Link href="/" aria-label="Jisr Tech" className="shrink-0">
           <Wordmark locale={locale} />
         </Link>
@@ -33,15 +34,21 @@ export function Nav({ locale }: { locale: Locale }) {
           aria-label={site.menu.ariaLabel[locale]}
           className="hidden items-center gap-1 md:flex"
         >
-          {site.nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-full px-4 py-2 text-[0.95rem] font-bold text-ink-soft transition-colors hover:text-ink"
-            >
-              {item.label[locale]}
-            </Link>
-          ))}
+          {site.nav.map((item) => {
+            const active = pathname.startsWith(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={active ? "page" : undefined}
+                className={`rounded-full px-4 py-2 text-[0.95rem] font-bold transition-colors ${
+                  active ? "bg-accent-tint text-accent-deep" : "text-ink-soft hover:text-ink"
+                }`}
+              >
+                {item.label[locale]}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
