@@ -8,6 +8,7 @@ import { buildMetadata } from "@/lib/seo";
 import { orderDigits } from "@/lib/digits";
 import { PageHero } from "@/components/system/PageHero";
 import { Reveal } from "@/components/system/Reveal";
+import { SectionHeader } from "@/components/system/SectionHeader";
 
 type PageProps = { params: Promise<{ locale: Locale }> };
 
@@ -30,7 +31,7 @@ export default async function StudioPage({ params }: PageProps) {
       <PageHero locale={locale} kicker={studioPage.kicker} title={studioPage.title} />
 
       {/* Narrative: the first paragraph reads large, the identity claim. */}
-      <section className="mx-auto max-w-6xl px-5 pb-24 sm:px-8">
+      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
         <Reveal>
           <div className="max-w-[62ch]">
             {studioPage.narrative.map((paragraph, i) =>
@@ -48,39 +49,43 @@ export default async function StudioPage({ params }: PageProps) {
         </Reveal>
       </section>
 
-      {/* Process, with deliverables: what the client holds at each stage. */}
+      {/* Process with deliverables, numbered list in the reference register. */}
       <section className="border-t border-line bg-paper-raise">
-        <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-28">
+        <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
           <Reveal>
-            <h2 className="text-title max-w-[20ch] font-extrabold text-ink">
-              {studioPage.processTitle[locale]}
-            </h2>
-            <p className="mt-4 max-w-[58ch] text-lg leading-relaxed text-ink-soft">
-              {studioPage.processNote[locale]}
-            </p>
+            <SectionHeader
+              locale={locale}
+              align="start"
+              kicker={studioPage.processKicker}
+              title={studioPage.processTitle}
+              lead={studioPage.processNote}
+            />
           </Reveal>
 
-          <ol className="mt-14 grid gap-x-8 gap-y-10 md:grid-cols-2">
+          <ol className="mt-12 grid gap-x-16 gap-y-10 md:grid-cols-2">
             {processStages.map((stage, i) => (
-              <li key={stage.name.en} className="h-full">
+              <li key={stage.name.en}>
                 <Reveal
                   delay={(i % 2) * 0.08}
-                  className="flex h-full flex-col rounded-card border border-line bg-paper p-7"
+                  className="flex h-full items-start gap-5 border-t border-line pt-6"
                 >
-                  <span className="text-sm font-bold text-accent">
+                  <span className="text-3xl font-extrabold leading-none text-accent/30">
                     {orderDigits(i + 1, locale)}
                   </span>
-                  <h3 className="mt-1.5 text-heading font-extrabold text-ink">
-                    {stage.name[locale]}
-                  </h3>
-                  <p className="mt-3 leading-relaxed text-ink-soft">{stage.detail[locale]}</p>
-                  <div className="mt-5 flex-1" />
-                  <p className="border-t border-line pt-4 text-[0.95rem]">
-                    <span className="font-bold text-ink-soft">
-                      {deliverableLabel[locale]}:
-                    </span>{" "}
-                    <span className="font-bold text-ink">{stage.deliverable[locale]}</span>
-                  </p>
+                  <div>
+                    <h3 className="text-heading font-extrabold text-ink">
+                      {stage.name[locale]}
+                    </h3>
+                    <p className="mt-2 max-w-[48ch] text-[0.95rem] leading-relaxed text-ink-soft">
+                      {stage.detail[locale]}
+                    </p>
+                    <p className="mt-3 text-[0.95rem]">
+                      <span className="font-bold text-ink-soft">{deliverableLabel[locale]}:</span>{" "}
+                      <span className="font-bold text-accent-deep">
+                        {stage.deliverable[locale]}
+                      </span>
+                    </p>
+                  </div>
                 </Reveal>
               </li>
             ))}
@@ -88,21 +93,32 @@ export default async function StudioPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* At a glance: the same verifiable facts, nothing invented. */}
-      <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
-        <Reveal>
-          <h2 className="text-heading font-extrabold text-ink">
-            {studioPage.factsTitle[locale]}
-          </h2>
-          <dl className="mt-8 grid gap-8 md:grid-cols-3">
-            {site.facts.map((fact) => (
-              <div key={fact.label.en} className="border-t-2 border-accent pt-4">
-                <dt className="text-sm font-bold text-ink-soft">{fact.label[locale]}</dt>
-                <dd className="mt-1.5 font-bold leading-snug text-ink">{fact.value[locale]}</dd>
-              </div>
-            ))}
-          </dl>
-        </Reveal>
+      {/* At a glance: the violet band, same as home. */}
+      <section className="relative isolate overflow-hidden bg-night">
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-[linear-gradient(120deg,rgb(96_35_192/0.55),rgb(20_16_43/0.2)_55%,rgb(167_139_250/0.35))]"
+        />
+        <div className="relative mx-auto max-w-6xl px-5 py-16 sm:px-8">
+          <Reveal>
+            <h2 className="text-heading font-extrabold text-white">
+              {studioPage.factsTitle[locale]}
+            </h2>
+            <dl className="mt-7 grid gap-5 md:grid-cols-3">
+              {site.facts.map((fact) => (
+                <div
+                  key={fact.label.en}
+                  className="rounded-card border border-white/15 bg-white/10 p-6 backdrop-blur-md"
+                >
+                  <dt className="text-sm font-bold text-white/70">{fact.label[locale]}</dt>
+                  <dd className="mt-2 font-extrabold leading-snug text-white">
+                    {fact.value[locale]}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
+        </div>
       </section>
     </>
   );

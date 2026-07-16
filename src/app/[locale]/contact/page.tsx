@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
-import { MapPin, Translate } from "@phosphor-icons/react/dist/ssr";
+import { MapPin, Translate, WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
 import type { Locale } from "@/i18n/routing";
 import { contactPage } from "@/content/pages/contact";
 import { site } from "@/content/site";
@@ -36,38 +36,48 @@ export default async function ContactPage({ params }: PageProps) {
         lead={contactPage.lead}
       />
 
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 pb-24 sm:px-8 sm:pb-32 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
+      <div className="mx-auto grid max-w-6xl gap-10 px-5 pb-24 pt-4 sm:px-8 sm:pb-28 lg:grid-cols-[1fr_1.25fr] lg:gap-14">
         {/* WhatsApp, visually primary */}
         <Reveal>
-          <section className="rounded-card bg-accent-tint p-7 sm:p-9">
+          <section>
             <h2 className="text-heading font-extrabold text-ink">{wa.label[locale]}</h2>
-            <p className="mt-3 leading-relaxed text-ink-soft">{wa.note[locale]}</p>
-            <WaCta
-              prefill={wa.prefill[locale]}
-              label={site.cta.label[locale]}
-              className="mt-7 w-full sm:w-auto"
-            />
-            <p dir="ltr" className="mt-4 text-lg font-bold text-ink rtl:text-end">
-              {site.whatsapp.display}
+            <p className="mt-2.5 max-w-[46ch] leading-relaxed text-ink-soft">
+              {wa.note[locale]}
             </p>
+            <WaCta prefill={wa.prefill[locale]} label={site.cta.label[locale]} className="mt-7" />
 
-            <dl className="mt-10 space-y-5 border-t border-accent/20 pt-7">
-              <div className="flex items-start gap-3">
-                <MapPin className="mt-0.5 size-5 shrink-0 text-accent" aria-hidden />
+            <dl className="mt-10 space-y-6">
+              <div className="flex items-start gap-4">
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-field border border-line bg-paper-raise text-accent">
+                  <WhatsappLogo weight="fill" className="size-5.5" aria-hidden />
+                </span>
+                <div>
+                  <dt className="text-sm font-bold text-ink-soft">{wa.label[locale]}</dt>
+                  <dd dir="ltr" className="mt-0.5 font-extrabold text-ink rtl:text-end">
+                    {site.whatsapp.display}
+                  </dd>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-field border border-line bg-paper-raise text-accent">
+                  <MapPin className="size-5.5" aria-hidden />
+                </span>
                 <div>
                   <dt className="text-sm font-bold text-ink-soft">
                     {contactPage.methods.location[locale]}
                   </dt>
-                  <dd className="mt-0.5 font-bold text-ink">{site.location[locale]}</dd>
+                  <dd className="mt-0.5 font-extrabold text-ink">{site.location[locale]}</dd>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
-                <Translate className="mt-0.5 size-5 shrink-0 text-accent" aria-hidden />
+              <div className="flex items-start gap-4">
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-field border border-line bg-paper-raise text-accent">
+                  <Translate className="size-5.5" aria-hidden />
+                </span>
                 <div>
                   <dt className="text-sm font-bold text-ink-soft">
                     {contactPage.methods.languages[locale]}
                   </dt>
-                  <dd className="mt-0.5 font-bold text-ink">
+                  <dd className="mt-0.5 font-extrabold text-ink">
                     {contactPage.methods.languagesValue[locale]}
                   </dd>
                 </div>
@@ -78,14 +88,14 @@ export default async function ContactPage({ params }: PageProps) {
 
         {/* The formal channel */}
         <Reveal delay={0.08}>
-          <section>
+          <section className="rounded-card border border-line bg-paper-raise p-6 shadow-raise sm:p-8">
             <h2 className="text-heading font-extrabold text-ink">
               {contactPage.form.label[locale]}
             </h2>
-            <p className="mt-3 max-w-[52ch] text-[0.95rem] leading-relaxed text-ink-soft">
+            <p className="mt-2 max-w-[52ch] text-sm leading-relaxed text-ink-soft">
               {contactPage.form.orgNote[locale]}
             </p>
-            <div className="mt-7">
+            <div className="mt-6">
               <ContactForm locale={locale} />
             </div>
           </section>
