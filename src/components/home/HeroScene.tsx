@@ -7,6 +7,7 @@ import { whatsAppUrl } from "@/lib/whatsapp";
 import { Reveal } from "@/components/system/Reveal";
 import { Magnetic } from "@/components/system/Magnetic";
 import { HeroClaim } from "./HeroClaim";
+import { ModelsPanel } from "./ModelsPanel";
 
 /**
  * Split hero in the reference register: soft violet-washed light
@@ -80,32 +81,15 @@ export function HeroScene({ locale }: { locale: Locale }) {
           </Reveal>
         </div>
 
-        {/* The engagement models as a quiet index (reference: "what we ship"). */}
+        {/* The engagement models as a quiet index with a strolling highlight. */}
         <Reveal delay={0.3}>
-          <aside className="rounded-card border border-line bg-paper-raise/70 p-7 shadow-raise backdrop-blur-md">
-            <p className="flex items-center gap-2.5 text-sm font-bold tracking-[0.12em] text-accent">
-              <span aria-hidden className="h-px w-5 bg-accent" />
-              {home.paths.title[locale]}
-            </p>
-            <ul className="mt-4 divide-y divide-line">
-              {home.paths.items.map((item) => (
-                <li key={item.name.en}>
-                  <a href="#models" className="group block py-4">
-                    <span className="flex items-center justify-between gap-3 font-extrabold text-ink transition-colors group-hover:text-accent">
-                      {item.name[locale]}
-                      <ArrowRight
-                        aria-hidden
-                        className="size-4 shrink-0 text-ink-soft transition-[color,transform] duration-300 group-hover:translate-x-0.5 group-hover:text-accent rtl:-scale-x-100 rtl:group-hover:-translate-x-0.5"
-                      />
-                    </span>
-                    <span className="mt-1 block text-sm leading-relaxed text-ink-soft">
-                      {item.forWho[locale]}
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </aside>
+          <ModelsPanel
+            heading={home.paths.title[locale]}
+            items={home.paths.items.map((item) => ({
+              name: item.name[locale],
+              forWho: item.forWho[locale],
+            }))}
+          />
         </Reveal>
       </div>
     </section>
