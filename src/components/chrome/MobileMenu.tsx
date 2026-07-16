@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { List, X } from "@phosphor-icons/react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { site } from "@/content/site";
@@ -10,6 +11,7 @@ import { LocaleToggle } from "./LocaleToggle";
 export function MobileMenu({ locale }: { locale: Locale }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const reduce = useReducedMotion();
 
   return (
     <div className="md:hidden">
@@ -23,8 +25,13 @@ export function MobileMenu({ locale }: { locale: Locale }) {
         {open ? <X className="size-6" /> : <List className="size-6" />}
       </button>
 
+      <AnimatePresence>
       {open && (
-        <nav
+        <motion.nav
+          initial={reduce ? false : { opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={reduce ? undefined : { opacity: 0, y: -10 }}
+          transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
           aria-label={site.menu.ariaLabel[locale]}
           className="fixed inset-x-0 top-17 z-50 border-b border-line bg-paper-raise px-6 pb-8 pt-2 shadow-raise"
         >
@@ -55,8 +62,9 @@ export function MobileMenu({ locale }: { locale: Locale }) {
             </Link>
             <LocaleToggle />
           </div>
-        </nav>
+        </motion.nav>
       )}
+      </AnimatePresence>
     </div>
   );
 }

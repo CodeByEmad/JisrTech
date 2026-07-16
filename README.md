@@ -17,7 +17,21 @@ npm install
 npm run dev        # http://localhost:3002
 npm run checks     # typecheck + lint
 npm run build      # production build (16 static pages)
+npm test           # Playwright smoke suite (auto-starts the server)
 ```
+
+CI (GitHub Actions) runs typecheck, lint, build, and the smoke suite on every push and pull request.
+
+## Measured quality (Lighthouse 12, production build)
+
+| Category | Desktop | Mobile |
+|---|---|---|
+| Performance | 100 | 84 |
+| Accessibility | 100 | 100 |
+| Best Practices | 100 | 100 |
+| SEO | 92* | 92* |
+
+\* The SEO deduction is the canonical URL pointing at `jisrtech.sa` while auditing on localhost; it resolves in production. Axe-core reports **0 WCAG 2.1 AA violations** across all pages in both locales.
 
 ## Architecture notes
 

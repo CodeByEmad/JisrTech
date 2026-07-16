@@ -11,6 +11,7 @@ import { JsonLd } from "@/components/system/JsonLd";
 import { PageHero } from "@/components/system/PageHero";
 import { Reveal } from "@/components/system/Reveal";
 import { WaCta } from "@/components/system/Button";
+import { ServicesRail } from "@/components/services/ServicesRail";
 
 type PageProps = { params: Promise<{ locale: Locale }> };
 
@@ -39,7 +40,15 @@ export default async function ServicesPage({ params }: PageProps) {
         lead={servicesPage.lead}
       />
 
-      <div className="mx-auto max-w-6xl px-5 pb-24 sm:px-8 sm:pb-32">
+      <div className="mx-auto grid max-w-6xl gap-x-12 px-5 pb-24 sm:px-8 sm:pb-32 xl:grid-cols-[200px_1fr]">
+        <ServicesRail
+          ariaLabel={servicesPage.kicker[locale]}
+          items={services.map((service) => ({
+            anchor: service.anchor,
+            label: service.name[locale],
+          }))}
+        />
+        <div>
         {services.map((service) => (
           <article
             key={service.anchor}
@@ -93,6 +102,7 @@ export default async function ServicesPage({ params }: PageProps) {
             </Reveal>
           </article>
         ))}
+        </div>
       </div>
     </>
   );
