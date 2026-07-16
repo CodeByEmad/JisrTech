@@ -144,7 +144,7 @@ export const home = {
     items: [
       {
         q: {
-          ar: "كم يكلف موقع إلكتروني لنشاط تجاري في السعودية؟",
+          ar: "كم يكلّف موقع إلكتروني لنشاط تجاري في السعودية؟",
           en: "How much does a business website cost in Saudi Arabia?",
         },
         a: {
