@@ -23,11 +23,11 @@ export function HeroScene({ locale }: { locale: Locale }) {
       />
       <div
         aria-hidden
-        className="absolute -top-40 end-[-10%] size-[36rem] rounded-full bg-[radial-gradient(circle,rgb(96_35_192/0.14),transparent_65%)] blur-2xl"
+        className="glow-drift-1 absolute -top-40 end-[-10%] size-[36rem] rounded-full bg-[radial-gradient(circle,rgb(96_35_192/0.14),transparent_65%)] blur-2xl"
       />
       <div
         aria-hidden
-        className="absolute -bottom-52 start-[-8%] size-[30rem] rounded-full bg-[radial-gradient(circle,rgb(167_139_250/0.18),transparent_65%)] blur-2xl"
+        className="glow-drift-2 absolute -bottom-52 start-[-8%] size-[30rem] rounded-full bg-[radial-gradient(circle,rgb(167_139_250/0.18),transparent_65%)] blur-2xl"
       />
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 pb-20 pt-16 sm:px-8 sm:pt-20 lg:grid-cols-[1.25fr_1fr] lg:gap-16 lg:pb-24">

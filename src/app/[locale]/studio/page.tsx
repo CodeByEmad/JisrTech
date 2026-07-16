@@ -30,8 +30,8 @@ export default async function StudioPage({ params }: PageProps) {
     <>
       <PageHero locale={locale} kicker={studioPage.kicker} title={studioPage.title} />
 
-      {/* Narrative: the first paragraph reads large, the identity claim. */}
-      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
+      {/* Narrative beside the brand plate: the name, the mark, the trade. */}
+      <section className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-[1.35fr_1fr]">
         <Reveal>
           <div className="max-w-[62ch]">
             {studioPage.narrative.map((paragraph, i) =>
@@ -45,6 +45,30 @@ export default async function StudioPage({ params }: PageProps) {
                 </p>
               ),
             )}
+          </div>
+        </Reveal>
+        <Reveal delay={0.12} className="max-lg:hidden">
+          <div
+            aria-hidden
+            className="relative flex aspect-square items-center justify-center overflow-hidden rounded-card bg-linear-to-br from-accent-tint via-paper-raise to-[#efeaf9]"
+          >
+            <svg viewBox="0 0 512 512" className="w-3/5" fill="none">
+              <path
+                d="M92 322 Q256 178 420 322"
+                stroke="var(--color-accent)"
+                strokeWidth="34"
+                strokeLinecap="round"
+              />
+              <path
+                d="M132 376 H380"
+                stroke="var(--color-accent-bright)"
+                strokeWidth="24"
+                strokeLinecap="round"
+              />
+            </svg>
+            <span className="absolute bottom-6 text-sm font-bold tracking-[0.18em] text-accent/60">
+              {site.wordmark.latin} — {site.wordmark.arabic}
+            </span>
           </div>
         </Reveal>
       </section>

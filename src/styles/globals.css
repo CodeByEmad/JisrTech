@@ -163,6 +163,32 @@ button:not(:disabled),
   50% { transform: translate(8%, -12%) scale(1.22); }
 }
 
+/* Slow drift for the light hero glows. */
+@keyframes glow-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-6%, 8%) scale(1.12); }
+}
+@keyframes glow-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(7%, -6%) scale(1.15); }
+}
+.glow-drift-1 { animation: glow-drift-1 22s ease-in-out infinite; }
+.glow-drift-2 { animation: glow-drift-2 28s ease-in-out infinite; }
+
+/* Tech-strip marquee: track holds the list twice, travels half its width. */
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 36s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
