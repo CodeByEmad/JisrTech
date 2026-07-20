@@ -54,6 +54,28 @@ export function servicesLd(locale: Locale) {
 
 /** Honest genre: demonstration builds are labeled as exactly that. */
 
+/** BreadcrumbList for inner pages: home -> page, in the page's language. */
+export function breadcrumbLd(locale: Locale, pageName: string, path: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: locale === "ar" ? "الرئيسية" : "Home",
+        item: `${SITE_URL}/${locale}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: pageName,
+        item: `${SITE_URL}/${locale}${path}`,
+      },
+    ],
+  };
+}
+
 /** FAQPage from the homepage's common questions (v10). */
 export function faqLd(locale: Locale) {
   return {

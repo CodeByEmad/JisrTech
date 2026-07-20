@@ -71,6 +71,36 @@ test.describe("contact form", () => {
   });
 });
 
+test.describe("services page", () => {
+  test("scrollspy rail marks the chapter in view", async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto("/en/services");
+    await page.evaluate(() => document.getElementById("digital-solutions")?.scrollIntoView());
+    await page.waitForTimeout(800);
+    const active = page.locator('nav a[aria-current="true"]');
+    await expect(active).toHaveText("Digital Solutions");
+  });
+});
+
+test.describe("spam defenses", () => {
+  test("honeypot submission is swallowed silently", async ({ page }) => {
+    await page.goto("/en/contact");
+    await page.waitForTimeout(3_300);
+    await page.evaluate(() => {
+      const el = document.querySelector<HTMLInputElement>('input[name="company"]');
+      if (el) el.value = "spam-bot";
+    });
+    await page.getByRole("button", { name: "Send" }).click();
+    // Bot sees the success state; nothing real happened.
+    await expect(page.getByText("Received, thank you")).toBeVisible();
+  });
+});
+
+test("Arabic services page uses Arabic-Indic ordinals", async ({ page }) => {
+  await page.goto("/ar/services");
+  await expect(page.locator("main")).toContainText("٠١");
+});
+
 test("security headers are served", async ({ request }) => {
   const response = await request.get("/en");
   const headers = response.headers();

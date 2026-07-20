@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useEffect, useState } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 import { CheckCircle, WhatsappLogo } from "@phosphor-icons/react";
 import { contactPage } from "@/content/pages/contact";
 import type { Locale } from "@/i18n/routing";
@@ -19,6 +19,17 @@ export function ContactForm({ locale }: { locale: Locale }) {
   const [startedAt, setStartedAt] = useState<number>(0);
   useEffect(() => setStartedAt(Date.now()), []);
 
+  // After a failed validation, move focus to the first invalid field
+  // (WCAG focus management), so keyboard and screen-reader users land
+  // exactly where the fix is needed.
+  const formRef = useRef<HTMLFormElement>(null);
+  useEffect(() => {
+    if (state.status !== "validation") return;
+    formRef.current
+      ?.querySelector<HTMLElement>('[aria-invalid="true"]')
+      ?.focus();
+  }, [state]);
+
   if (state.status === "success") {
     return (
       <div className="flex items-start gap-3 rounded-card border border-accent/40 bg-accent-tint p-6">
@@ -31,9 +42,9 @@ export function ContactForm({ locale }: { locale: Locale }) {
   const invalid = state.status === "validation" ? state.fields : {};
 
   return (
-    <form action={formAction} noValidate className="space-y-5">
+    <form ref={formRef} action={formAction} noValidate className="space-y-5">
       {/* Honeypot, invisible to people */}
-      <div aria-hidden className="absolute -start-[9999px] size-px overflow-hidden">
+      <div aria-hidden className="absolute inset-s-[-9999px] size-px overflow-hidden">
         <label>
           company
           <input type="text" name="company" tabIndex={-1} autoComplete="off" />

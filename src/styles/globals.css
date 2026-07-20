@@ -55,6 +55,12 @@
 }
 
 /* Per-locale UI font: each page carries only its own script's family first. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 html[lang="en"] {
   --font-ui: var(--font-latin), ui-sans-serif, system-ui, sans-serif;
 }

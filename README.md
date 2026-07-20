@@ -26,12 +26,12 @@ CI (GitHub Actions) runs typecheck, lint, build, and the smoke suite on every pu
 
 | Category | Desktop | Mobile |
 |---|---|---|
-| Performance | 100 | 84 |
+| Performance | 100 | 93 |
 | Accessibility | 100 | 100 |
 | Best Practices | 100 | 100 |
 | SEO | 92* | 92* |
 
-\* The SEO deduction is the canonical URL pointing at `jisrtech.sa` while auditing on localhost; it resolves in production. Axe-core reports **0 WCAG 2.1 AA violations** across all pages in both locales.
+\* The SEO deduction is the canonical URL pointing at `jisrtech.sa` while auditing on localhost; it resolves in production. The Playwright suite (23 tests) includes an axe-core gate asserting **0 WCAG 2.1 AA violations** on every page in both locales, enforced in CI.
 
 ## Architecture notes
 

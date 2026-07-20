@@ -33,10 +33,18 @@ const securityHeaders = [
   { key: "X-Frame-Options", value: "DENY" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+  { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
+  { key: "X-DNS-Prefetch-Control", value: "off" },
+  { key: "X-Permitted-Cross-Domain-Policies", value: "none" },
 ];
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  experimental: {
+    // Tree-shake icon and motion imports to per-symbol modules.
+    optimizePackageImports: ["@phosphor-icons/react", "motion"],
+  },
   images: {
     // AVIF first: the demo screenshots are the heaviest assets we serve.
     formats: ["image/avif", "image/webp"],

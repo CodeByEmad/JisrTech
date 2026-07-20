@@ -4,7 +4,7 @@ import type { Locale } from "@/i18n/routing";
 import { services } from "@/content/services";
 import { servicesPage } from "@/content/pages/services";
 import { buildMetadata } from "@/lib/seo";
-import { servicesLd } from "@/lib/structured-data";
+import { breadcrumbLd, servicesLd } from "@/lib/structured-data";
 import { orderDigits } from "@/lib/digits";
 import { SERVICE_ICONS } from "@/lib/service-icons";
 import { JsonLd } from "@/components/system/JsonLd";
@@ -33,6 +33,7 @@ export default async function ServicesPage({ params }: PageProps) {
   return (
     <>
       <JsonLd data={servicesLd(locale)} />
+      <JsonLd data={breadcrumbLd(locale, servicesPage.kicker[locale], "/services")} />
       <PageHero
         locale={locale}
         kicker={servicesPage.kicker}

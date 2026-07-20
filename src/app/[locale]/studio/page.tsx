@@ -6,6 +6,8 @@ import { processStages, deliverableLabel } from "@/content/process";
 import { site } from "@/content/site";
 import { buildMetadata } from "@/lib/seo";
 import { orderDigits } from "@/lib/digits";
+import { breadcrumbLd } from "@/lib/structured-data";
+import { JsonLd } from "@/components/system/JsonLd";
 import { PageHero } from "@/components/system/PageHero";
 import { Reveal } from "@/components/system/Reveal";
 import { SectionHeader } from "@/components/system/SectionHeader";
@@ -30,6 +32,7 @@ export default async function StudioPage({ params }: PageProps) {
 
   return (
     <>
+      <JsonLd data={breadcrumbLd(locale, studioPage.kicker[locale], "/studio")} />
       <PageHero locale={locale} kicker={studioPage.kicker} title={studioPage.title} />
 
       {/* Narrative beside the brand plate: the name, the mark, the trade. */}

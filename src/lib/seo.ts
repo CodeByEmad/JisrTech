@@ -46,6 +46,7 @@ export function buildMetadata({
       url: `/${locale}${path}`,
       siteName: "Jisr Tech, جسر تك",
       locale: locale === "ar" ? "ar_SA" : "en_US",
+      alternateLocale: locale === "ar" ? "en_US" : "ar_SA",
       type: "website",
       images: [
         {

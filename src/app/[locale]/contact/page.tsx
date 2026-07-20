@@ -5,6 +5,8 @@ import type { Locale } from "@/i18n/routing";
 import { contactPage } from "@/content/pages/contact";
 import { site } from "@/content/site";
 import { buildMetadata } from "@/lib/seo";
+import { breadcrumbLd } from "@/lib/structured-data";
+import { JsonLd } from "@/components/system/JsonLd";
 import { PageHero } from "@/components/system/PageHero";
 import { Reveal } from "@/components/system/Reveal";
 import { WaCta } from "@/components/system/Button";
@@ -30,6 +32,7 @@ export default async function ContactPage({ params }: PageProps) {
 
   return (
     <>
+      <JsonLd data={breadcrumbLd(locale, contactPage.kicker[locale], "/contact")} />
       <PageHero
         locale={locale}
         kicker={contactPage.kicker}

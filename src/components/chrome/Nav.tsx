@@ -21,8 +21,10 @@ export function Nav({ locale }: { locale: Locale }) {
 
   return (
     <motion.header
-      className={`sticky top-0 z-50 bg-paper/80 backdrop-blur-lg transition-[box-shadow,border-color] duration-300 ${
-        scrolled ? "border-b border-line/80 shadow-raise" : "border-b border-transparent"
+      className={`sticky top-0 z-50 backdrop-blur-lg transition-[box-shadow,border-color,background-color] duration-300 ${
+        scrolled
+          ? "border-b border-line/80 bg-paper/95 shadow-raise"
+          : "border-b border-transparent bg-paper/80"
       }`}
     >
       <div className="mx-auto flex h-17 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
