@@ -12,6 +12,24 @@ import { Wordmark } from "./Wordmark";
 export function Footer({ locale }: { locale: Locale }) {
   return (
     <footer className="bg-night text-night-text">
+      {/* The signature: the crossing, resting over the footer. */}
+      <svg
+        viewBox="0 0 1200 80"
+        fill="none"
+        aria-hidden
+        preserveAspectRatio="xMidYMax meet"
+        className="mx-auto -mb-4 mt-2 w-full max-w-6xl px-5 text-night-line sm:px-8"
+      >
+        <path d="M0 64 H1200" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+        <path d="M100 66 V22 M1100 66 V22" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
+        <path
+          d="M0 64 Q50 28 100 22 Q600 96 1100 22 Q1150 28 1200 64"
+          stroke="var(--color-accent-bright)"
+          strokeOpacity="0.35"
+          strokeWidth="3"
+          strokeLinecap="round"
+        />
+      </svg>
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>

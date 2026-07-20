@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ArrowRight } from "@phosphor-icons/react";
-import { useReducedMotion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 
 /**
  * The hero's second read: a soft highlight strolls across the three
@@ -28,10 +28,14 @@ export function ModelsPanel({
 
   return (
     <aside
-      className="rounded-card border border-line bg-paper-raise/70 p-7 shadow-raise backdrop-blur-md"
+      className="relative overflow-hidden rounded-card border border-line bg-paper-raise/70 p-7 shadow-raise backdrop-blur-md"
       onPointerEnter={() => setPaused(true)}
       onPointerLeave={() => setPaused(false)}
     >
+      <span
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-accent via-accent-bright to-accent"
+      />
       <p className="flex items-center gap-2.5 text-sm font-bold tracking-[0.12em] text-accent">
         <span aria-hidden className="h-px w-5 bg-accent" />
         {heading}
@@ -40,7 +44,12 @@ export function ModelsPanel({
         {items.map((item, i) => {
           const lit = !reduce && !paused && active === i;
           return (
-            <li key={item.name}>
+            <motion.li
+              key={item.name}
+              initial={reduce ? false : { opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: 0.55 + i * 0.13, ease: [0.16, 1, 0.3, 1] }}
+            >
               <a
                 href="#models"
                 className={`group -mx-3 block rounded-field px-3 py-4 transition-colors duration-500 ${
@@ -64,7 +73,7 @@ export function ModelsPanel({
                   {item.forWho}
                 </span>
               </a>
-            </li>
+            </motion.li>
           );
         })}
       </ul>

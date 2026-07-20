@@ -11,8 +11,8 @@ import { ServicesScene } from "@/components/home/ServicesScene";
 import { ModelsScene } from "@/components/home/ModelsScene";
 import { WhyScene } from "@/components/home/WhyScene";
 import { ProcessScene } from "@/components/home/ProcessScene";
+import { ManifestoScene } from "@/components/home/ManifestoScene";
 import { FaqScene } from "@/components/home/FaqScene";
-import { FactsScene } from "@/components/home/FactsScene";
 import { InviteScene } from "@/components/home/InviteScene";
 
 type PageProps = { params: Promise<{ locale: Locale }> };
@@ -40,7 +40,7 @@ export default async function HomePage({ params }: PageProps) {
       <ServicesScene locale={locale} />
       <WhyScene locale={locale} />
       <ProcessScene locale={locale} />
-      <FactsScene locale={locale} />
+      <ManifestoScene locale={locale} />
       <ModelsScene locale={locale} />
       <FaqScene locale={locale} />
       <InviteScene locale={locale} />
