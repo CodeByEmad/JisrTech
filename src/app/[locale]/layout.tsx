@@ -11,6 +11,7 @@ import { whatsAppUrl } from "@/lib/whatsapp";
 import { Nav } from "@/components/chrome/Nav";
 import { Footer } from "@/components/chrome/Footer";
 import { ScrollProgress } from "@/components/system/ScrollProgress";
+import { BackToTop } from "@/components/system/BackToTop";
 import { WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
 import "@/styles/globals.css";
 
@@ -66,6 +67,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           <Nav locale={l} />
           <main id="main">{children}</main>
           <Footer locale={l} />
+          <BackToTop locale={l} />
           {/* Floating channel button: the one place WhatsApp wears its own green. */}
           <a
             href={whatsAppUrl(home.hero.prefill[l])}

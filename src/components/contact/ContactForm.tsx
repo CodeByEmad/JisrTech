@@ -30,9 +30,53 @@ export function ContactForm({ locale }: { locale: Locale }) {
       ?.focus();
   }, [state]);
 
+  // Draft autosave: an accidental navigation never loses the message.
+  const DRAFT_KEY = "jisr-contact-draft";
+  useEffect(() => {
+    const form = formRef.current;
+    if (!form) return;
+    try {
+      const draft = JSON.parse(sessionStorage.getItem(DRAFT_KEY) ?? "{}");
+      for (const name of ["name", "reach", "message"] as const) {
+        const field = form.elements.namedItem(name) as HTMLInputElement | null;
+        if (field && !field.value && typeof draft[name] === "string") {
+          field.value = draft[name];
+        }
+      }
+    } catch {
+      /* draft is best-effort */
+    }
+  }, []);
+  const saveDraft = () => {
+    const form = formRef.current;
+    if (!form) return;
+    const data = new FormData(form);
+    sessionStorage.setItem(
+      DRAFT_KEY,
+      JSON.stringify({
+        name: data.get("name"),
+        reach: data.get("reach"),
+        message: data.get("message"),
+      }),
+    );
+  };
+
+  // On success: clear the draft and hand focus to the confirmation.
+  const successRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (state.status !== "success") return;
+    sessionStorage.removeItem(DRAFT_KEY);
+    successRef.current?.focus();
+  }, [state]);
+
   if (state.status === "success") {
     return (
-      <div className="flex items-start gap-3 rounded-card border border-accent/40 bg-accent-tint p-6">
+      <div
+        ref={successRef}
+        tabIndex={-1}
+        role="status"
+        className="flex items-start gap-3 rounded-card border border-accent/40 bg-accent-tint p-6 outline-none"
+      >
         <CheckCircle weight="fill" className="mt-0.5 size-6 shrink-0 text-accent" aria-hidden />
         <p className="font-bold leading-relaxed text-accent-deep">{t.success[locale]}</p>
       </div>
@@ -42,7 +86,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
   const invalid = state.status === "validation" ? state.fields : {};
 
   return (
-    <form ref={formRef} action={formAction} noValidate className="space-y-5">
+    <form ref={formRef} action={formAction} onInput={saveDraft} noValidate className="space-y-5">
       {/* Honeypot, invisible to people */}
       <div aria-hidden className="absolute inset-s-[-9999px] size-px overflow-hidden">
         <label>

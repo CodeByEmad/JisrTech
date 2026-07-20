@@ -97,8 +97,9 @@ export async function sendContactMessage(
   try {
     const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
-      from: "Jisr Tech Website <onboarding@resend.dev>",
-      to: site.contact.email,
+      // Both configurable at launch without touching code.
+      from: process.env.CONTACT_FROM_EMAIL ?? "Jisr Tech Website <onboarding@resend.dev>",
+      to: process.env.CONTACT_TO_EMAIL ?? site.contact.email,
       subject: `Website inquiry, ${parsed.data.name}`,
       text: `Name: ${parsed.data.name}\nReach: ${parsed.data.reach}\n\n${parsed.data.message}`,
     });
