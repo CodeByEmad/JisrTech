@@ -10,6 +10,7 @@ import { SITE_URL } from "@/lib/seo";
 import { whatsAppUrl } from "@/lib/whatsapp";
 import { Nav } from "@/components/chrome/Nav";
 import { Footer } from "@/components/chrome/Footer";
+import { ScrollProgress } from "@/components/system/ScrollProgress";
 import { WhatsappLogo } from "@phosphor-icons/react/dist/ssr";
 import "@/styles/globals.css";
 
@@ -61,6 +62,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           >
             {site.a11y.skipToContent[l]}
           </a>
+          <ScrollProgress />
           <Nav locale={l} />
           <main id="main">{children}</main>
           <Footer locale={l} />
@@ -72,7 +74,11 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             aria-label="WhatsApp"
             className="fixed bottom-6 end-6 z-40 flex size-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-raise transition-transform duration-300 hover:scale-108 motion-reduce:hover:scale-100"
           >
-            <WhatsappLogo weight="fill" className="size-7" />
+            <span
+              aria-hidden
+              className="absolute inset-0 rounded-full bg-whatsapp/40 motion-safe:animate-ping [animation-duration:2.5s]"
+            />
+            <WhatsappLogo weight="fill" className="relative size-7" />
           </a>
         </NextIntlClientProvider>
       </body>

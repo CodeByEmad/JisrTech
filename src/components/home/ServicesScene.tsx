@@ -5,6 +5,7 @@ import { home } from "@/content/pages/home";
 import { site } from "@/content/site";
 import { services } from "@/content/services";
 import { orderDigits } from "@/lib/digits";
+import { SERVICE_ICONS } from "@/lib/service-icons";
 import { Reveal } from "@/components/system/Reveal";
 import { SectionHeader } from "@/components/system/SectionHeader";
 import { Spotlight } from "@/components/system/Spotlight";
@@ -34,13 +35,23 @@ export function ServicesScene({ locale }: { locale: Locale }) {
                 href={`/services#${service.anchor}`}
                 className="group flex h-full flex-col p-7 transition-colors duration-300 hover:bg-accent-tint/40"
               >
-                <span
-                  aria-hidden
-                  className="text-3xl font-extrabold text-accent/25 transition-colors duration-300 group-hover:text-accent/60"
-                >
-                  {orderDigits(service.order, locale)}
+                <span className="flex items-center justify-between gap-4">
+                  {(() => {
+                    const Icon = SERVICE_ICONS[service.anchor];
+                    return Icon ? (
+                      <span className="flex size-11 items-center justify-center rounded-field bg-accent-tint text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-paper-raise">
+                        <Icon weight="duotone" className="size-5.5" />
+                      </span>
+                    ) : null;
+                  })()}
+                  <span
+                    aria-hidden
+                    className="text-3xl font-extrabold leading-none text-accent/25 transition-colors duration-300 group-hover:text-accent/60"
+                  >
+                    {orderDigits(service.order, locale)}
+                  </span>
                 </span>
-                <h3 className="mt-4 text-heading font-extrabold text-ink">
+                <h3 className="mt-5 text-heading font-extrabold text-ink">
                   {service.name[locale]}
                 </h3>
                 <p className="mt-2.5 text-[0.95rem] leading-relaxed text-ink-soft">

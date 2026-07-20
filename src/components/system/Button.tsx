@@ -14,8 +14,9 @@ const base =
   "inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-full px-7 py-3.5 text-[0.95rem] font-bold transition-[background-color,transform] duration-300 active:scale-[0.98]";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-accent text-paper-raise hover:bg-accent-deep",
-  quiet: "border border-line bg-paper-raise text-ink hover:border-ink/30",
+  primary:
+    "bg-accent text-paper-raise shadow-lg shadow-accent/25 hover:bg-accent-deep hover:shadow-accent/40",
+  quiet: "border border-line bg-paper-raise text-ink hover:border-accent/40",
   night: "bg-paper-raise text-ink hover:bg-paper",
 };
 

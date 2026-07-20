@@ -24,12 +24,13 @@ export function HeroScene({ locale }: { locale: Locale }) {
       />
       <div
         aria-hidden
-        className="glow-drift-1 absolute -top-40 end-[-10%] size-[36rem] rounded-full bg-[radial-gradient(circle,rgb(96_35_192/0.14),transparent_65%)] blur-2xl"
+        className="glow-drift-1 absolute -top-40 inset-e-[-10%] size-144 rounded-full bg-[radial-gradient(circle,rgb(96_35_192/0.14),transparent_65%)] blur-2xl"
       />
       <div
         aria-hidden
-        className="glow-drift-2 absolute -bottom-52 start-[-8%] size-[30rem] rounded-full bg-[radial-gradient(circle,rgb(167_139_250/0.18),transparent_65%)] blur-2xl"
+        className="glow-drift-2 absolute -bottom-52 inset-s-[-8%] size-120 rounded-full bg-[radial-gradient(circle,rgb(167_139_250/0.18),transparent_65%)] blur-2xl"
       />
+      <div aria-hidden className="dot-grid absolute inset-0" />
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 pb-20 pt-16 sm:px-8 sm:pt-20 lg:grid-cols-[1.25fr_1fr] lg:gap-16 lg:pb-24">
         <div>
@@ -59,7 +60,7 @@ export function HeroScene({ locale }: { locale: Locale }) {
                   href={whatsAppUrl(home.hero.prefill[locale])}
                   target="_blank"
                   rel="noopener"
-                  className="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full bg-accent px-7 py-3.5 text-[0.95rem] font-bold text-paper-raise transition-colors duration-300 hover:bg-accent-deep active:scale-[0.98]"
+                  className="inline-flex items-center gap-2.5 whitespace-nowrap rounded-full bg-accent px-7 py-3.5 text-[0.95rem] font-bold text-paper-raise shadow-lg shadow-accent/25 transition-[background-color,box-shadow] duration-300 hover:bg-accent-deep hover:shadow-accent/40 active:scale-[0.98]"
                 >
                   <WhatsappLogo weight="fill" className="size-5" aria-hidden />
                   {site.cta.label[locale]}

@@ -163,6 +163,13 @@ button:not(:disabled),
   50% { transform: translate(8%, -12%) scale(1.22); }
 }
 
+/* Faint dot grid: tactility for the large gradient surfaces. */
+.dot-grid {
+  background-image: radial-gradient(rgb(96 35 192 / 0.09) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(to bottom, black 20%, transparent 85%);
+}
+
 /* Slow drift for the light hero glows. */
 @keyframes glow-drift-1 {
   0%, 100% { transform: translate(0, 0) scale(1); }

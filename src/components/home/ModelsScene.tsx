@@ -29,10 +29,10 @@ export function ModelsScene({ locale }: { locale: Locale }) {
                 className={`h-full ${featured ? "z-10 lg:-my-5" : ""}`}
               >
                 <article
-                  className={`flex h-full flex-col p-7 sm:p-8 ${
+                  className={`flex h-full flex-col p-7 transition-[transform,box-shadow] duration-300 sm:p-8 ${
                     featured
-                      ? "rounded-card bg-night text-night-text shadow-raise"
-                      : `rounded-card border border-line bg-paper ${
+                      ? "rounded-card bg-night text-night-text shadow-raise hover:-translate-y-1"
+                      : `rounded-card border border-line bg-paper hover:-translate-y-1 hover:shadow-raise ${
                           i === 0 ? "lg:rounded-e-none lg:border-e-0" : "lg:rounded-s-none lg:border-s-0"
                         }`
                   }`}

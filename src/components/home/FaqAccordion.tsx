@@ -28,7 +28,7 @@ export function FaqAccordion({ items }: { items: { q: string; a: string }[] }) {
               aria-expanded={isOpen}
               aria-controls={panelId}
               onClick={() => setOpen(isOpen ? null : i)}
-              className="flex w-full cursor-pointer items-center justify-between gap-6 py-5 text-start"
+              className="-mx-3 flex w-[calc(100%+1.5rem)] cursor-pointer items-center justify-between gap-6 rounded-field px-3 py-5 text-start transition-colors duration-200 hover:bg-accent-tint/40"
             >
               <span className="text-lg font-bold text-ink">{item.q}</span>
               <motion.span

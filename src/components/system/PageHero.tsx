@@ -21,8 +21,9 @@ export function PageHero({
       />
       <div
         aria-hidden
-        className="absolute -top-32 end-[-8%] size-[26rem] rounded-full bg-[radial-gradient(circle,rgb(96_35_192/0.12),transparent_65%)] blur-2xl"
+        className="absolute -top-32 inset-e-[-8%] size-104 rounded-full bg-[radial-gradient(circle,rgb(96_35_192/0.12),transparent_65%)] blur-2xl"
       />
+      <div aria-hidden className="dot-grid absolute inset-0" />
       <header className="relative mx-auto max-w-6xl px-5 pb-14 pt-14 sm:px-8 sm:pb-16 sm:pt-20">
         {kicker && (
           <p className="flex items-center gap-2.5 text-sm font-bold tracking-[0.12em] text-accent">
