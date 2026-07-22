@@ -1,15 +1,15 @@
+import Image from "next/image";
 import type { Locale } from "@/i18n/routing";
 import { studioPage } from "@/content/pages/studio";
 import { home } from "@/content/pages/home";
 import { site } from "@/content/site";
 import { Reveal } from "@/components/system/Reveal";
-import { Aurora } from "@/components/system/Aurora";
 
 /**
  * The manifesto band: the founder's honesty statement in large type
- * on the night surface, the verifiable facts beneath it. The single
- * source is the Studio narrative; established companies repeat their
- * one true sentence.
+ * over the brand key visual (the fiber-optic crossing, generated
+ * in-house), the verifiable facts beneath it. Single source for the
+ * statement: the Studio narrative.
  */
 export function ManifestoScene({ locale }: { locale: Locale }) {
   const manifesto = studioPage.narrative[studioPage.narrative.length - 1];
@@ -20,13 +20,18 @@ export function ManifestoScene({ locale }: { locale: Locale }) {
       aria-label={home.facts.srTitle[locale]}
       className="relative isolate overflow-hidden bg-night"
     >
-      <Aurora dim />
-      <span
+      <Image
+        src="/images/jisr-bridge.png"
+        alt=""
+        fill
+        sizes="100vw"
+        className="object-cover object-bottom"
+      />
+      {/* Scrim: the statement sits in the void above the crossing. */}
+      <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-20 end-[-4%] select-none text-[20rem] font-extrabold leading-none text-white/[0.03]"
-      >
-        {site.wordmark.arabic}
-      </span>
+        className="absolute inset-0 bg-linear-to-b from-night/90 via-night/45 to-night/20"
+      />
 
       <div className="relative mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-28">
         <Reveal>
