@@ -31,7 +31,7 @@ CI (GitHub Actions) runs typecheck, lint, build, and the smoke suite on every pu
 | Best Practices | 100 | 100 |
 | SEO | 92* | 92* |
 
-\* The SEO deduction is the canonical URL pointing at `jisrtech.sa` while auditing on localhost; it resolves in production. The Playwright suite (23 tests) includes an axe-core gate asserting **0 WCAG 2.1 AA violations** on every page in both locales, enforced in CI.
+\* The SEO deduction is the canonical URL pointing at `jisrtech.sa` while auditing on localhost; it resolves in production. The Playwright suite (25 tests) includes an axe-core gate asserting **0 WCAG 2.1 AA violations** on every page in both locales, enforced in CI.
 
 ## Architecture notes
 
