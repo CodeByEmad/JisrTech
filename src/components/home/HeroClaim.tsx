@@ -36,7 +36,7 @@ export function HeroClaim({
 
   return (
     <h1
-      className={`text-display max-w-[22ch] font-extrabold text-balance ${
+      className={`text-display max-w-[24ch] font-extrabold text-balance ${
         dark ? "text-white" : "text-ink"
       } ${className}`}
     >

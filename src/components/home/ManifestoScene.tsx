@@ -7,9 +7,9 @@ import { Reveal } from "@/components/system/Reveal";
 
 /**
  * The manifesto band: the founder's honesty statement in large type
- * over the brand key visual (the fiber-optic crossing, generated
- * in-house), the verifiable facts beneath it. Single source for the
- * statement: the Studio narrative.
+ * over the second brand render (the glass wave, generated in-house,
+ * deliberately distinct from the hero's crossing), the verifiable
+ * facts beneath. Single source for the statement: the Studio narrative.
  */
 export function ManifestoScene({ locale }: { locale: Locale }) {
   const manifesto = studioPage.narrative[studioPage.narrative.length - 1];
@@ -21,19 +21,17 @@ export function ManifestoScene({ locale }: { locale: Locale }) {
       className="relative isolate overflow-hidden bg-night"
     >
       <Image
-        src="/images/jisr-bridge.png"
+        src="/images/jisr-waves.png"
         alt=""
         fill
         sizes="100vw"
-        className="object-cover object-bottom"
+        className="object-cover object-center"
       />
-      {/* Scrim: the statement sits in the void above the crossing. */}
+      {/* Scrim: the statement sits in the dark above the wave. */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-linear-to-b from-night/90 via-night/45 to-night/20"
+        className="absolute inset-0 bg-linear-to-b from-night/90 via-night/55 to-night/35"
       />
-      {/* Light traveling the strands. */}
-      <div aria-hidden className="sheen" />
 
       <div className="relative mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-28">
         <Reveal>

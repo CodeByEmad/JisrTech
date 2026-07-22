@@ -44,7 +44,7 @@ export function HeroScene({ locale }: { locale: Locale }) {
           <div className="mt-5">
             <HeroClaim
               dark
-              className="lg:text-[3.8rem]"
+              className="lg:text-[3.4rem]"
               pre={home.hero.claimPre[locale]}
               accent={home.hero.claimAccent[locale]}
               post={home.hero.claimPost[locale]}
