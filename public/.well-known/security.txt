@@ -1,0 +1,5 @@
+Contact: https://jisrtech.sa/en/contact
+Contact: https://jisrtech.sa/ar/contact
+Expires: 2027-07-31T00:00:00.000Z
+Preferred-Languages: ar, en
+Canonical: https://jisrtech.sa/.well-known/security.txt

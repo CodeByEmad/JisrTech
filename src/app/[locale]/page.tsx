@@ -3,7 +3,7 @@ import { setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { home } from "@/content/pages/home";
 import { buildMetadata } from "@/lib/seo";
-import { faqLd, professionalServiceLd } from "@/lib/structured-data";
+import { faqLd, professionalServiceLd, webSiteLd } from "@/lib/structured-data";
 import { JsonLd } from "@/components/system/JsonLd";
 import { HeroScene } from "@/components/home/HeroScene";
 import { TechStrip } from "@/components/home/TechStrip";
@@ -33,6 +33,7 @@ export default async function HomePage({ params }: PageProps) {
 
   return (
     <>
+      <JsonLd data={webSiteLd(locale)} />
       <JsonLd data={professionalServiceLd(locale)} />
       <JsonLd data={faqLd(locale)} />
       <HeroScene locale={locale} />

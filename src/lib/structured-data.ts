@@ -54,6 +54,18 @@ export function servicesLd(locale: Locale) {
 
 /** Honest genre: demonstration builds are labeled as exactly that. */
 
+/** WebSite entity: bilingual identity for search engines. */
+export function webSiteLd(locale: Locale) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Jisr Tech, جسر تك",
+    url: SITE_URL,
+    inLanguage: ["ar-SA", "en"],
+    description: site.tagline[locale],
+  };
+}
+
 /** BreadcrumbList for inner pages: home -> page, in the page's language. */
 export function breadcrumbLd(locale: Locale, pageName: string, path: string) {
   return {
