@@ -32,6 +32,8 @@ export function ManifestoScene({ locale }: { locale: Locale }) {
         aria-hidden
         className="absolute inset-0 bg-linear-to-b from-night/90 via-night/45 to-night/20"
       />
+      {/* Light traveling the strands. */}
+      <div aria-hidden className="sheen" />
 
       <div className="relative mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-28">
         <Reveal>

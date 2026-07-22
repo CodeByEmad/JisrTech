@@ -169,6 +169,29 @@ button:not(:disabled),
   50% { transform: translate(8%, -12%) scale(1.22); }
 }
 
+/* Light sheen traveling across the manifesto key visual: ambient
+   motion without video. Confined to the strands zone by mask. */
+@keyframes sheen-travel {
+  0% { transform: translateX(-70%) skewX(-14deg); }
+  100% { transform: translateX(240%) skewX(-14deg); }
+}
+.sheen {
+  position: absolute;
+  inset-block: 0;
+  inline-size: 45%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(167 139 250 / 0.1) 45%,
+    rgb(255 255 255 / 0.07) 55%,
+    transparent
+  );
+  mix-blend-mode: screen;
+  mask-image: linear-gradient(to top, black 55%, transparent 90%);
+  animation: sheen-travel 11s linear infinite;
+  pointer-events: none;
+}
+
 /* Faint dot grid: tactility for the large gradient surfaces. */
 .dot-grid {
   background-image: radial-gradient(rgb(96 35 192 / 0.09) 1.5px, transparent 1.5px);
