@@ -12,11 +12,15 @@ export function HeroClaim({
   accent,
   post,
   joinPost,
+  dark = false,
+  className = "",
 }: {
   pre: string;
   accent: string;
   post: string;
   joinPost: boolean;
+  dark?: boolean;
+  className?: string;
 }) {
   const reduce = useReducedMotion();
   // Opacity stays 1 so the claim paints at first render (it is the LCP
@@ -31,13 +35,17 @@ export function HeroClaim({
         };
 
   return (
-    <h1 className="text-display max-w-[22ch] font-extrabold text-ink text-balance">
+    <h1
+      className={`text-display max-w-[22ch] font-extrabold text-balance ${
+        dark ? "text-white" : "text-ink"
+      } ${className}`}
+    >
       <motion.span className="inline-block" {...part(0)}>
         {pre}
       </motion.span>{" "}
       <motion.span className="inline-block" {...part(1)}>
-        <span className="text-accent">{accent}</span>
-        {joinPost ? <span className="text-ink">{post}</span> : null}
+        <span className={dark ? "text-accent-bright" : "text-accent"}>{accent}</span>
+        {joinPost ? <span className={dark ? "text-white" : "text-ink"}>{post}</span> : null}
       </motion.span>
       {!joinPost && (
         <>

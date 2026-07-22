@@ -28,7 +28,7 @@ export function ModelsPanel({
 
   return (
     <aside
-      className="relative overflow-hidden rounded-card border border-line bg-paper-raise/70 p-7 shadow-raise backdrop-blur-md"
+      className="relative overflow-hidden rounded-card border border-white/15 bg-white/10 p-7 shadow-raise backdrop-blur-md"
       onPointerEnter={() => setPaused(true)}
       onPointerLeave={() => setPaused(false)}
     >
@@ -36,11 +36,11 @@ export function ModelsPanel({
         aria-hidden
         className="absolute inset-x-0 top-0 h-1 bg-linear-to-r from-accent via-accent-bright to-accent"
       />
-      <p className="flex items-center gap-2.5 text-sm font-bold tracking-[0.12em] text-accent">
-        <span aria-hidden className="h-px w-5 bg-accent" />
+      <p className="flex items-center gap-2.5 text-sm font-bold tracking-[0.12em] text-accent-bright">
+        <span aria-hidden className="h-px w-5 bg-accent-bright" />
         {heading}
       </p>
-      <ul className="mt-4 divide-y divide-line">
+      <ul className="mt-4 divide-y divide-white/10">
         {items.map((item, i) => {
           const lit = !reduce && !paused && active === i;
           return (
@@ -53,23 +53,25 @@ export function ModelsPanel({
               <a
                 href="#models"
                 className={`group -mx-3 block rounded-field px-3 py-4 transition-colors duration-500 ${
-                  lit ? "bg-accent-tint/70" : ""
+                  lit ? "bg-white/10" : ""
                 }`}
               >
                 <span
-                  className={`flex items-center justify-between gap-3 font-extrabold transition-colors duration-500 group-hover:text-accent ${
-                    lit ? "text-accent-deep" : "text-ink"
+                  className={`flex items-center justify-between gap-3 font-extrabold transition-colors duration-500 group-hover:text-accent-bright ${
+                    lit ? "text-accent-bright" : "text-white"
                   }`}
                 >
                   {item.name}
                   <ArrowRight
                     aria-hidden
-                    className={`size-4 shrink-0 transition-[color,transform] duration-500 group-hover:translate-x-0.5 group-hover:text-accent rtl:-scale-x-100 rtl:group-hover:-translate-x-0.5 ${
-                      lit ? "translate-x-0.5 text-accent rtl:-translate-x-0.5" : "text-ink-soft"
+                    className={`size-4 shrink-0 transition-[color,transform] duration-500 group-hover:translate-x-0.5 group-hover:text-accent-bright rtl:-scale-x-100 rtl:group-hover:-translate-x-0.5 ${
+                      lit
+                        ? "translate-x-0.5 text-accent-bright rtl:-translate-x-0.5"
+                        : "text-night-soft"
                     }`}
                   />
                 </span>
-                <span className="mt-1 block text-sm leading-relaxed text-ink-soft">
+                <span className="mt-1 block text-sm leading-relaxed text-night-soft">
                   {item.forWho}
                 </span>
               </a>
