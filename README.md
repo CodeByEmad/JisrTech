@@ -16,8 +16,8 @@ Official website of [Jisr Tech](https://jisrtech.sa), a software studio in Al Kh
 npm install
 npm run dev        # http://localhost:3002
 npm run checks     # typecheck + lint
-npm run build      # production build (16 static pages)
-npm test           # Playwright smoke suite (auto-starts the server)
+npm run build      # production build (20 static pages)
+npm test           # Playwright suite: 25 tests incl. axe a11y gate (auto-starts the server)
 ```
 
 CI (GitHub Actions) runs typecheck, lint, build, and the smoke suite on every push and pull request.
@@ -26,7 +26,7 @@ CI (GitHub Actions) runs typecheck, lint, build, and the smoke suite on every pu
 
 | Category | Desktop | Mobile |
 |---|---|---|
-| Performance | 100 | 93 |
+| Performance | 100 | 87 (image-led hero) |
 | Accessibility | 100 | 100 |
 | Best Practices | 100 | 100 |
 | SEO | 92* | 92* |

@@ -69,6 +69,22 @@ export function ServicesScene({ locale }: { locale: Locale }) {
           </Reveal>
         ))}
       </div>
+
+      {/* The path to proof: the founder's link to the demonstration builds. */}
+      <Reveal delay={0.08}>
+        <p className="mt-10 text-center">
+          <Link
+            href="/work"
+            className="group inline-flex items-center gap-2 text-[0.95rem] font-bold text-accent transition-colors hover:text-accent-deep"
+          >
+            {home.services.workLink[locale]}
+            <ArrowRight
+              aria-hidden
+              className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 rtl:-scale-x-100 rtl:group-hover:-translate-x-0.5"
+            />
+          </Link>
+        </p>
+      </Reveal>
     </section>
   );
 }
