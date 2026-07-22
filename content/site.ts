@@ -22,6 +22,7 @@ export const site = {
 
   nav: [
     { href: "/services", label: { ar: "الخدمات", en: "Services" } },
+    { href: "/work", label: { ar: "الأعمال", en: "Work" } },
     { href: "/studio", label: { ar: "من نحن", en: "About" } },
     { href: "/contact", label: { ar: "تواصل معنا", en: "Contact" } },
   ] satisfies NavItem[],

@@ -2,9 +2,9 @@ import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 import { SITE_URL } from "@/lib/seo";
 
-/** Both locales with hreflang alternates. Work stays unpublished (§9). */
+/** Both locales with hreflang alternates. Work published 2026-07-22. */
 
-const paths = ["", "/services", "/studio", "/contact", "/privacy"];
+const paths = ["", "/services", "/work", "/studio", "/contact", "/privacy"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return paths.flatMap((path) =>
