@@ -15,6 +15,8 @@ export const localizedSchema = z.object({
 export const screenSchema = z.object({
   src: z.string().startsWith("/work/"),
   alt: localizedSchema,
+  /** Short visible label under the frame: what this screen is. */
+  caption: localizedSchema.optional(),
   width: z.number().int().positive(),
   height: z.number().int().positive(),
 });

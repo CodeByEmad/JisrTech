@@ -27,6 +27,10 @@ export const restaurantOrders: WorkItem = workItemSchema.parse({
   screens: [
     {
       src: "/work/restaurant-orders/kitchen.png",
+      caption: {
+        ar: "شاشة المطبخ لحظة بلحظة: جديدة، قيد التحضير، جاهزة",
+        en: "The live kitchen board: new, in progress, ready",
+      },
       alt: {
         ar: "شاشة تصميمية من البناء التجريبي: شاشة طلبات المطبخ، أعمدة «جديدة» و«قيد التحضير» و«جاهزة»، مع إشعارات واتساب للعملاء.",
         en: "Concept screen from the demonstration build: a kitchen order board, new, in-progress, and ready columns, with WhatsApp customer notifications.",

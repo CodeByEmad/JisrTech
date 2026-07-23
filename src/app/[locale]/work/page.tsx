@@ -32,15 +32,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 function ScreenFrame({
   src,
   alt,
+  caption,
   width,
   height,
   large = false,
+  priority = false,
 }: {
   src: string;
   alt: string;
+  caption?: string;
   width: number;
   height: number;
   large?: boolean;
+  priority?: boolean;
 }) {
   return (
     <figure className="overflow-hidden rounded-card border border-line bg-paper shadow-raise">
@@ -49,14 +53,23 @@ function ScreenFrame({
         <span className="size-2.5 rounded-full bg-line" />
         <span className="size-2.5 rounded-full bg-line" />
       </div>
+      {/* Eager on purpose: these screens ARE the page; a lazy blank frame
+          here reads as a broken promise. */}
       <Image
         src={src}
         alt={alt}
         width={width}
         height={height}
-        sizes={large ? "(min-width: 1024px) 60vw, 100vw" : "(min-width: 1024px) 40vw, 100vw"}
+        loading="eager"
+        priority={priority}
+        sizes={large ? "(min-width: 1024px) 60vw, 100vw" : "(min-width: 1024px) 90vw, 100vw"}
         className="w-full"
       />
+      {caption && (
+        <figcaption className="border-t border-line bg-paper-raise px-4 py-2.5 text-sm text-ink-soft">
+          {caption}
+        </figcaption>
+      )}
     </figure>
   );
 }
@@ -107,9 +120,11 @@ export default async function WorkPage({ params }: PageProps) {
                     <ScreenFrame
                       src={mainScreen.src}
                       alt={mainScreen.alt[locale]}
+                      caption={mainScreen.caption?.[locale]}
                       width={mainScreen.width}
                       height={mainScreen.height}
                       large
+                      priority={idx === 0}
                     />
                   </Reveal>
                 )}
@@ -136,15 +151,22 @@ export default async function WorkPage({ params }: PageProps) {
                 </Reveal>
               </div>
 
+              {/* A lone secondary screen spans the full width; pairs share a row. */}
               {restScreens.length > 0 && (
-                <div className="mt-10 grid gap-8 lg:grid-cols-2">
+                <div
+                  className={
+                    restScreens.length > 1 ? "mt-10 grid gap-8 lg:grid-cols-2" : "mt-10"
+                  }
+                >
                   {restScreens.map((screen, i) => (
                     <Reveal key={screen.src} delay={0.1 + i * 0.08}>
                       <ScreenFrame
                         src={screen.src}
                         alt={screen.alt[locale]}
+                        caption={screen.caption?.[locale]}
                         width={screen.width}
                         height={screen.height}
+                        large={restScreens.length === 1}
                       />
                     </Reveal>
                   ))}

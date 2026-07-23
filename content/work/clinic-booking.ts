@@ -27,6 +27,10 @@ export const clinicBooking: WorkItem = workItemSchema.parse({
   screens: [
     {
       src: "/work/clinic-booking/dashboard.png",
+      caption: {
+        ar: "لوحة مواعيد الأسبوع، بتأكيدات واتساب وحجوزات خارج الدوام",
+        en: "The week's appointment board, with WhatsApp confirmations and after-hours bookings",
+      },
       alt: {
         ar: "شاشة تصميمية من البناء التجريبي: لوحة مواعيد عربية، تقويم أسبوعي بمواعيد مؤكدة عبر واتساب وحجوزات إلكترونية خارج ساعات الدوام.",
         en: "Concept screen from the demonstration build: an Arabic clinic dashboard, a week calendar with WhatsApp-confirmed appointments and after-hours online bookings.",
@@ -36,6 +40,10 @@ export const clinicBooking: WorkItem = workItemSchema.parse({
     },
     {
       src: "/work/clinic-booking/reports.png",
+      caption: {
+        ar: "تقارير العيادة: نسبة الغياب، أكثر العلاجات حجزًا، وقنوات الحجز",
+        en: "Clinic reports: no-show rate, top treatments, and booking channels",
+      },
       alt: {
         ar: "شاشة تصميمية من البناء التجريبي: تقارير العيادة، حجوزات الأسبوع داخل الدوام وخارجه، وأكثر العلاجات حجزًا، وقنوات الحجز.",
         en: "Concept screen from the demonstration build: clinic reports, weekly in-hours versus after-hours bookings, top treatments, and booking channels.",
