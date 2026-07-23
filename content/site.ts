@@ -6,7 +6,7 @@ import type { Localized } from "@/lib/types";
  * shared brief, never translated sentence-by-sentence.
  */
 
-type NavItem = { href: "/services" | "/work" | "/studio" | "/contact"; label: Localized };
+type NavItem = { href: "/services" | "/studio" | "/contact"; label: Localized };
 
 export const site = {
   name: { ar: "جسر تك", en: "Jisr Tech" } satisfies Localized,
@@ -22,7 +22,6 @@ export const site = {
 
   nav: [
     { href: "/services", label: { ar: "الخدمات", en: "Services" } },
-    { href: "/work", label: { ar: "الأعمال", en: "Work" } },
     { href: "/studio", label: { ar: "من نحن", en: "About" } },
     { href: "/contact", label: { ar: "تواصل معنا", en: "Contact" } },
   ] satisfies NavItem[],

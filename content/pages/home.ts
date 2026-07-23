@@ -48,10 +48,6 @@ export const home = {
       ar: "ست خدمات على طريق واحد: تبدأ بموقع، وتنمو إلى أنظمة تدير العمل كله.",
       en: "Six services on one path: start with a website, grow into systems that run the whole operation.",
     } satisfies Loc,
-    workLink: {
-      ar: "شاهد نماذج من أعمالنا",
-      en: "See our demonstration builds",
-    } satisfies Loc,
     cardCta: { ar: "التفاصيل", en: "Details" } satisfies Loc,
     techLabel: { ar: "نبني بأدواتٍ موثوقة", en: "We build with" } satisfies Loc,
     tech: [
@@ -269,16 +265,6 @@ export const home = {
       en: "Four stages. You approve each one.",
     } satisfies Loc,
     // stages: shared content/process.ts, consumed directly by the scene.
-  },
-
-  work: {
-    kicker: { ar: "من أعمالنا", en: "Selected work" } satisfies Loc,
-    title: {
-      ar: "بنيناها لنُريك ما نصنعه.",
-      en: "Built to show you what we make.",
-    } satisfies Loc,
-    // demoKicker / viewLabel: shared with the Work pages , 
-    // single source in content/pages/work.ts.
   },
 
   facts: {

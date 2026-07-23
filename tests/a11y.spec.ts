@@ -12,8 +12,6 @@ const pages = [
   "/en",
   "/ar/services",
   "/en/services",
-  "/ar/work",
-  "/en/work",
   "/ar/studio",
   "/en/studio",
   "/ar/contact",

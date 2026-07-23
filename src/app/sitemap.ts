@@ -4,7 +4,7 @@ import { SITE_URL } from "@/lib/seo";
 
 /** Both locales with hreflang alternates. Work published 2026-07-22. */
 
-const paths = ["", "/services", "/work", "/studio", "/contact", "/privacy"];
+const paths = ["", "/services", "/studio", "/contact", "/privacy"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return paths.flatMap((path) =>
