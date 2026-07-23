@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { studioPage } from "@/content/pages/studio";
@@ -107,18 +106,11 @@ export default async function StudioPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* At a glance: the key visual carries the facts, same as home. */}
+      {/* At a glance: a clean violet band, clearly separated from the footer. */}
       <section className="relative isolate overflow-hidden bg-night">
-        <Image
-          src="/images/jisr-bridge.png"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover object-bottom"
-        />
         <div
           aria-hidden
-          className="absolute inset-0 bg-linear-to-b from-night/85 via-night/55 to-night/35"
+          className="absolute inset-0 bg-[linear-gradient(120deg,rgb(96_35_192/0.5),rgb(20_16_43/0.15)_55%,rgb(167_139_250/0.3))]"
         />
         <div className="relative mx-auto max-w-6xl px-5 py-16 sm:px-8">
           <Reveal>
